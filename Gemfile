@@ -73,4 +73,5 @@ end
 
 group :development do
   gem 'rubocop', require: false
+  gem 'active_hash'
 end

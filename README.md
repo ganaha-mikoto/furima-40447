@@ -16,6 +16,8 @@
 ### Association
   - has_many :products
   - has_many :purchasers
+  - has_many :histories
+
 
 ## products テーブル
 
@@ -23,19 +25,22 @@
 | ------------------- | ---------- | ------------------------------ |
 | name                | string     | null: false                    |
 | description         | text       | null: false                    |
-| category            | string     | null: false, default: '---'    |
-| condition           | string     | null: false, default: '---'    |
-| shipping_charge     | string     | null: false, default: '---'    |
-| shipping_area       | string     | null: false, default: '---'    |
-| shipping_days       | string     | null: false, default: '---'    |
+| category_id         | integer    | null: false, default: 0        |
+| condition_id        | integer    | null: false, default: 0        |
+| shipping_charge_id  | integer    | null: false, default: 0        |
+| shipping_area_id    | integer    | null: false, default: 0        |
+| shipping_days_id    | integer    | null: false, default: 0        |
 | price               | integer    | null: false                    |
+| user_id             | integer    | null: false, foreign_key: true |
 
 ### Association
 
-  - belongs_to :user
-  - has_many :purchasers
+  - belongs_to :users
+  - has_one :purchasers
+  - has_one :histories
 
-## purchasers テーブル
+
+## addresses テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
@@ -54,3 +59,16 @@
   - belongs_to :product
 
 
+
+
+## histories テーブル
+
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| user_id             | integer    | null: false, foreign_key: true |
+| product_id          | integer    | null: false, foreign_key: true |
+
+### Association
+
+  - belongs_to :user
+  - belongs_to :product
