@@ -15,7 +15,6 @@
 
 ### Association
   - has_many :products
-  - has_many :purchasers
   - has_many :histories
 
 
@@ -44,7 +43,7 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
-| prefecture          | string     | null: false                    |
+| shipping_area_id    | integer    | null: false, default: 0        |
 | city                | string     | null: false                    |
 | address             | string     | null: false                    |
 | building_name       | string     |                                |
@@ -53,8 +52,6 @@
 
 ### Association
 
-  - belongs_to :user
-  - belongs_to :product
   - has_one :history
 
 
@@ -66,7 +63,6 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | product             | references | null: false, foreign_key: true |
-| address             | references | null: false, foreign_key: true |
 
 ### Association
 
