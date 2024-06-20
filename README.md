@@ -29,15 +29,14 @@
 | condition_id        | integer    | null: false, default: 0        |
 | shipping_charge_id  | integer    | null: false, default: 0        |
 | shipping_area_id    | integer    | null: false, default: 0        |
-| shipping_days_id    | integer    | null: false, default: 0        |
+| shipping_day_id     | integer    | null: false, default: 0        |
 | price               | integer    | null: false                    |
-| user_id             | integer    | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
-  - belongs_to :users
-  - has_one :purchasers
-  - has_one :histories
+  - belongs_to :user
+  - has_one :history
 
 
 ## addresses テーブル
@@ -50,13 +49,13 @@
 | address             | string     | null: false                    |
 | building_name       | string     |                                |
 | phone_number        | string     | null: false                    |
-| user_id             | integer    | null: false, foreign_key: true |
-| product_id          | integer    | null: false, foreign_key: true |
+| history             | references | null: false, foreign_key: true |
 
 ### Association
 
   - belongs_to :user
   - belongs_to :product
+  - has_one :history
 
 
 
@@ -65,10 +64,12 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| user_id             | integer    | null: false, foreign_key: true |
-| product_id          | integer    | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
+| product             | references | null: false, foreign_key: true |
+| address             | references | null: false, foreign_key: true |
 
 ### Association
 
   - belongs_to :user
   - belongs_to :product
+  - has_one :address
