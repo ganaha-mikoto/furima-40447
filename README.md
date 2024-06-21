@@ -52,7 +52,7 @@
 
 ### Association
 
-  - has_one :history
+  - belongs_to :history
 
 
 
