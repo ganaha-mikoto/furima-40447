@@ -24,18 +24,18 @@
 | ------------------- | ---------- | ------------------------------ |
 | name                | string     | null: false                    |
 | description         | text       | null: false                    |
-| category_id         | integer    | null: false, default: 0        |
-| condition_id        | integer    | null: false, default: 0        |
-| shipping_charge_id  | integer    | null: false, default: 0        |
-| shipping_area_id    | integer    | null: false, default: 0        |
-| shipping_day_id     | integer    | null: false, default: 0        |
+| category_id         | integer    | null: false                    |
+| condition_id        | integer    | null: false                    |
+| shipping_charge_id  | integer    | null: false                    |
+| shipping_area_id    | integer    | null: false                    |
+| shipping_day_id     | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 
   - belongs_to :user
-  - has_one :history
+  - belongs_to :history
 
 
 ## addresses テーブル
@@ -43,7 +43,7 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
-| shipping_area_id    | integer    | null: false, default: 0        |
+| shipping_area_id    | integer    | null: false                    |
 | city                | string     | null: false                    |
 | address             | string     | null: false                    |
 | building_name       | string     |                                |
