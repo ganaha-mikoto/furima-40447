@@ -75,3 +75,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'active_hash'
 end
+
+group :production do
+  gem 'pg'
+end
