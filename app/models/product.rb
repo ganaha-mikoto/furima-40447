@@ -110,4 +110,6 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipping_day, class_name: 'Product::ShippingDay'
 
   validates :name, :description, :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :price, presence: true
+  validates :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, numericality: { other_than: 1 , message: "can't be blank"}
+
 end
