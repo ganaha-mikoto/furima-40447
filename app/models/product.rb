@@ -2,5 +2,5 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :history
 
-  # validates :name, :description, :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :price, presence: true
+  validates :name, :description, :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :price, presence: true
 end
