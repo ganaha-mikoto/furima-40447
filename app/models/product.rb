@@ -111,5 +111,5 @@ class Product < ApplicationRecord
 
   validates :name, :description, :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :price, presence: true
   validates :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, numericality: { other_than: 1 , message: "can't be blank"}
-
+  validates :price, numericality: { greater_than: 0, less_than_or_equal_to: 9_999_999, message: "must be between 1 and 9999999" }
 end
