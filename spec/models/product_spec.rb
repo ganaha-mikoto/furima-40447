@@ -83,5 +83,11 @@ RSpec.describe Product, type: :model do
       @product.valid?
       expect(@product.errors.full_messages).to include("Price must be between 300 and 9999999")
     end
+
+    it '画像が紐づいていない場合登録できない' do
+      @product.image = nil
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Image can't be blank")
+    end
   end
 end
