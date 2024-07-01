@@ -1,7 +1,7 @@
 # app/models/product.rb
 class Product < ApplicationRecord
   belongs_to :user
-  # belongs_to :history
+  belongs_to :history
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
