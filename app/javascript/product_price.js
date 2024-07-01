@@ -4,8 +4,6 @@ window.addEventListener('turbo:load', () => {
   if (priceInput) {
     priceInput.addEventListener("input", () => {
       const inputValue = priceInput.value;
-      console.log(inputValue);
-
       // 販売手数料を計算
       const fee = Math.floor(inputValue * 0.1);
       

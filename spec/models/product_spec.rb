@@ -12,6 +12,12 @@ RSpec.describe Product, type: :model do
   end
 
   context '商品の新規登録ができない場合' do
+    it 'ユーザー情報がない場合は登録できない' do
+      @product.user = nil
+      @product.valid?
+      expect(@product.errors.full_messages).to include("User must exist")
+    end
+
     it '商品名が空では登録できない' do
       @product.name = ''
       @product.valid?
@@ -63,19 +69,19 @@ RSpec.describe Product, type: :model do
     it '価格が数値でなければ登録できない' do
       @product.price = 'abc'
       @product.valid?
-      expect(@product.errors.full_messages).to include("Price must be between 1 and 9999999")
+      expect(@product.errors.full_messages).to include("Price must be between 300 and 9999999")
     end
 
-    it '価格が0以下では登録できない' do
-      @product.price = 0
+    it '価格が300以下では登録できない' do
+      @product.price = 200
       @product.valid?
-      expect(@product.errors.full_messages).to include("Price must be between 1 and 9999999")
+      expect(@product.errors.full_messages).to include("Price must be between 300 and 9999999")
     end
 
     it '価格が1,000,000以上では登録できない' do
       @product.price = 10000000
       @product.valid?
-      expect(@product.errors.full_messages).to include("Price must be between 1 and 9999999")
+      expect(@product.errors.full_messages).to include("Price must be between 300 and 9999999")
     end
   end
 end
