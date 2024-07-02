@@ -10,27 +10,25 @@
       <% if @products.present? %>
         <% @products.each do |product| %>
           <li class='list'>
-            <%= link_to products_path(product) do %>
+            <%= link_to "#" do %> 
               <div class='item-img-content'>
                   <% if product.image.present? %>
                     <%= image_tag product.image, class: "item-img" %>
                     <% else %>
-                    <%= image_tag 'default_image.png', class: "item-img" %> <!-- デフォルト画像を指定 -->
+                    <%= image_tag 'default_image.png', class: "item-img" %> 
                   <% end %>
-                <%# 商品が売れていればsold outを表示しましょう %>
                 <% if product.history.present? %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
                 <% end %>
-                <%# //商品が売れていればsold outを表示しましょう %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
                   <%= product.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= product.price %>円<br><%= '配送料負担' %></span>
+                  <span><%= product.price %>円<br><%= product.shipping_charge.name %></span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
@@ -41,7 +39,6 @@
           </li>
         <% end %>
       <% else %>
-        <!-- 商品がない場合は以下のダミー商品が表示されるようにしましょう -->
         <li class='list'>
           <%= link_to '#' do %>
             <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -59,7 +56,6 @@
             </div>
           <% end %>
         </li>
-        <!-- //商品がない場合は以下のダミー商品が表示されるようにしましょう -->
       <% end %>
     </ul>
   </div>
