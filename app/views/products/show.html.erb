@@ -1,5 +1,4 @@
 <%= render "shared/header" %>
-
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
@@ -11,7 +10,6 @@
       <% else %>
         <%= image_tag 'default_image.png', class: "item-box-img" %>
       <% end %>
-
       <% if @product.history.present? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
@@ -26,17 +24,15 @@
         <%= @product.shipping_charge.name %>
       </span>
     </div>
-
     <% if user_signed_in? %>
-      <% if @product.user == current_user %> <%#&& @product.history.nil?%> 
-        <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+      <% if @product.user == current_user %> <%#&& @product.history.nil?%>
+        <%= link_to "商品の編集", edit_product_path(@product), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", "#", data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "item-destroy" %>
-      <% elsif %> <%# @product.history.nil? %>
+        <%= link_to "削除", product_path(@product), data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "item-destroy" %>
+      <% else %> <%# @product.history.nil? %>
         <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
       <% end %>
     <% end %>
-
     <div class="item-explain-box">
       <span>商品説明</span>
       <p><%= @product.description %></p>
@@ -80,7 +76,6 @@
       </div>
     </div>
   </div>
-
   <div class="comment-box">
     <form>
       <textarea class="comment-text"></textarea>
@@ -105,5 +100,4 @@
   </div>
   <a href="#" class="another-item"><%= @product.category.name %>をもっと見る</a>
 </div>
-
 <%= render "shared/footer" %>
