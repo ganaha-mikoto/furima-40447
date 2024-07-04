@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.order(created_at: :desc)
@@ -23,7 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # Ensure the current user is the owner of the product
     redirect_to root_path unless @product.user == current_user
   end
 
@@ -35,6 +34,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    if @product.user == current_user
+      @product.destroy
+      redirect_to root_path, notice: '商品が削除されました。'
+    else
+      redirect_to root_path, alert: 'この商品を削除する権限がありません。'
+    end
+  end
+
   private
 
   def product_params
@@ -43,5 +51,7 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: '商品が見つかりません。'
   end
 end
