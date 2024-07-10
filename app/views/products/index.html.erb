@@ -11,11 +11,7 @@
           <li class='list'>
             <%= link_to product_path(product) do %>
               <div class='item-img-content'>
-                <% if product.image.present? %>
                   <%= image_tag product.image, class: "item-img" %>
-                <% else %>
-                  <%= image_tag 'default_image.png', class: "item-img" %>
-                <% end %>
                 <% if product.history.present? %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
