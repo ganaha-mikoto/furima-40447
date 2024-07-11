@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      Rails.logger.info(@order_form.errors.full_messages) # バリデーションエラーの詳細ログ
       render :index, status: :unprocessable_entity
     end
   end
