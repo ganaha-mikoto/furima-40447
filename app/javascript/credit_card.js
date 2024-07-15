@@ -12,7 +12,6 @@
 
   const form = document.getElementById('charge-form');
   form.addEventListener("submit", (e) => {
-    console.log("イベントが発火しました"); // イベント発火確認用のログ
 
 
     payjp.createToken(numberElement).then(function (response) {
