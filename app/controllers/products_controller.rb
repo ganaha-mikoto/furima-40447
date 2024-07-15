@@ -23,8 +23,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless @product.user == current_user
+    if @product.user != current_user || @product.history.present?
+      redirect_to root_path
+    end
   end
+  
 
   def update
     if @product.update(product_params)
