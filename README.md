@@ -38,7 +38,7 @@
   - belongs_to :history
 
 
-## addresses テーブル
+## orders テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
