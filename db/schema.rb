@@ -55,10 +55,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_04_092506) do
     t.string "address", null: false
     t.string "building"
     t.string "phone_number", null: false
-    t.bigint "order_id", null: false
+    t.bigint "history_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_orders_on_order_id"
+    t.index ["history_id"], name: "index_orders_on_history_id"
   end
 
   create_table "products", charset: "utf8", force: :cascade do |t|
@@ -99,6 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_04_092506) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "histories", "products"
   add_foreign_key "histories", "users"
-  add_foreign_key "orders", "orders"
+  add_foreign_key "orders", "histories"
   add_foreign_key "products", "users"
 end
