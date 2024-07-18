@@ -17,6 +17,6 @@ class OrderForm
 
   def save
     history = History.create(user_id: user_id, product_id: product_id)
-    OrderForm.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, history_id: history.id)
+    Order.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, history_id: history.id)
   end
 end
