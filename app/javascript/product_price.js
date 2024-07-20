@@ -1,4 +1,5 @@
-window.addEventListener('turbo:load', () => {
+// 関数として定義
+function calculatePrice() {
   const priceInput = document.getElementById("item-price");
 
   if (priceInput) {
@@ -18,4 +19,8 @@ window.addEventListener('turbo:load', () => {
       profitDom.innerHTML = profit;
     });
   }
-});
+}
+
+// turbo:loadとturbo:renderイベントで関数を呼び出し
+window.addEventListener('turbo:load', calculatePrice);
+window.addEventListener('turbo:render', calculatePrice);
