@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_charge
-  belongs_to_active_hash :shipping_area
+  belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping_day
 
   validates :name, :description, :category_id, :condition_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :price, :image, presence: true
